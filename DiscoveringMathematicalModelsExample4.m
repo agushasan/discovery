@@ -21,8 +21,8 @@ RF = 1;
 
 %% state initialization
 x        = [5;1;1];
-xbar     = zeros(n,1);
-y        = zeros(n,1);
+xbar     = x;%zeros(n,1);
+y        = x;%zeros(n,1);
 thetabar = zeros(r,1);
  
 %% true parameters
@@ -96,7 +96,7 @@ set(gca,'color','white','LineWidth',3,'FontSize',36)
 legend('measured','estimated')
 grid on;
 grid minor;
-ylabel('x [m]')
+ylabel('x [m]','FontSize',72)
 subplot(3,1,2)
 plot(t,yArray(2,:),'-b','LineWidth',10);
 hold on;
@@ -104,7 +104,7 @@ plot(t,xbarArray(2,:),':r','LineWidth',10);
 set(gca,'color','white','LineWidth',3,'FontSize',36)
 grid on;
 grid minor;
-ylabel('v [m/s]')
+ylabel('v [m/s]','FontSize',72)
 subplot(3,1,3)
 plot(t,yArray(2,:),'-b','LineWidth',10);
 hold on;
@@ -112,7 +112,7 @@ plot(t,xbarArray(2,:),':r','LineWidth',10);
 set(gca,'color','white','LineWidth',3,'FontSize',36)
 grid on;
 grid minor;
-ylabel('i [Amp]')
+ylabel('i [Amp]','FontSize',72)
 xlabel('t (s)')
 
 figure(2)
@@ -126,7 +126,7 @@ xlim([0 tf])
 ylim([L-1 L+1])
 grid on;
 grid minor;
-ylabel('L [H]')
+ylabel('L [H]','FontSize',72)
 subplot(3,2,2)
 plot(t,L*ones(1,length(t))-(dt./thetabarArray(5,:)),':r','LineWidth',10);
 set(gca,'color','white','LineWidth',3,'FontSize',36)
@@ -134,7 +134,7 @@ xlim([0 tf])
 ylim([-1 1])
 grid on;
 grid minor;
-ylabel('error L')
+ylabel('error L','FontSize',72)
 subplot(3,2,3)
 plot(t,R*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
@@ -144,7 +144,7 @@ xlim([0 tf])
 ylim([R-1 R+1])
 grid on;
 grid minor;
-ylabel('R [Ohm]')
+ylabel('R [Ohm]','FontSize',72)
 subplot(3,2,4)
 plot(t,R*ones(1,length(t))+L*thetabarArray(4,:)/dt,':r','LineWidth',10);
 set(gca,'color','white','LineWidth',3,'FontSize',36)
@@ -152,7 +152,7 @@ xlim([0 tf])
 ylim([-1 1])
 grid on;
 grid minor;
-ylabel('error R')
+ylabel('error R','FontSize',72)
 subplot(3,2,5)
 plot(t,c*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
@@ -162,7 +162,7 @@ xlim([0 tf])
 ylim([c-1 c+1])
 grid on;
 grid minor;
-ylabel('C [F]')
+ylabel('C [F]','FontSize',72)
 xlabel('t (s)')
 subplot(3,2,6)
 plot(t,c*ones(1,length(t))+m*thetabarArray(3,:)/dt,':r','LineWidth',10);
@@ -171,7 +171,7 @@ xlim([0 tf])
 ylim([-1 1])
 grid on;
 grid minor;
-ylabel('error C')
+ylabel('error C','FontSize',72)
 xlabel('t (s)')
 
 Coeff = (1/dt)*thetabar(1:r,end)
