@@ -4,25 +4,25 @@ clear;
 clc;
 
 %% time horizon
-tf  = 5;
-dt  = 0.001;
-t   = dt:dt:tf;
+tf  = 5;        % time horizon
+dt  = 0.001;    % time step
+t   = dt:dt:tf; % time array
 
 %% number of variables and coefficients
-n = 2;
-r = 10;
+n = 2;          % number of state
+r = 10;         % number of parameters 
 
 %% system description
 A = eye(n);
 C = eye(n);
 
 %% noise
-R = 0.625;
+R = 0.625;      % standard deviation of the noise
 
 %% state initialization
 x        = [10;0];
-xbar     = zeros(n,1);
-y        = zeros(n,1);
+xbar     = x;
+y        = x;
 thetabar = zeros(r,1);
  
 %% true parameters
@@ -81,16 +81,15 @@ figure(1)
 subplot(2,1,1)
 plot(t,yArray(1,:),'-b','LineWidth',10);
 set(gca,'color','white','LineWidth',3,'FontSize',36)
-legend('measured')
 grid on;
 grid minor;
-ylabel('x [m]')
+ylabel('x [m]','FontSize',72)
 subplot(2,1,2)
 plot(t,yArray(2,:),'-b','LineWidth',10);
 set(gca,'color','white','LineWidth',3,'FontSize',36)
 grid on;
 grid minor;
-ylabel('v [m/s]')
+ylabel('v [m/s]','FontSize',72)
 xlabel('t (s)')
 
 figure(2)
@@ -102,7 +101,7 @@ set(gca,'color','white','LineWidth',3,'FontSize',36)
 legend('measured','estimated')
 grid on;
 grid minor;
-ylabel('x [m]')
+ylabel('x [m]','FontSize',72)
 subplot(2,1,2)
 plot(t,yArray(2,:),'-b','LineWidth',10);
 hold on;
@@ -110,7 +109,7 @@ plot(t,xbarArray(2,:),':r','LineWidth',10);
 set(gca,'color','white','LineWidth',3,'FontSize',36)
 grid on;
 grid minor;
-ylabel('v [m/s]')
+ylabel('v [m/s]','FontSize',72)
 xlabel('t (s)')
 
 figure(3)
