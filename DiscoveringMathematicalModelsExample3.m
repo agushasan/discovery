@@ -22,7 +22,7 @@ RF = 1;
 %% state initialization
 x        = [1;1];
 xbar     = x;%zeros(n,1);
-y        = zeros(n,1);
+y        = x;%zeros(n,1);
 thetabar = zeros(r,1);
  
 %% true parameters
@@ -55,7 +55,7 @@ Gamma   = 1*zeros(n,r);
 %% simulation
 for i=1:(tf/dt)
     
-    u = 4*sin(i*dt*40);
+    %u = 4*sin(i*dt*40);
 
     uArray         = [uArray u];
     xArray         = [xArray x];
@@ -114,7 +114,7 @@ legend('control input')
 xlim([0 tf])
 grid on;
 grid minor;
-ylabel('u')
+ylabel('u','FontSize',72)
 xlabel('t (s)')
 subplot(3,2,3)
 plot(t,(-b/J)*ones(1,length(t)),'-k','LineWidth',10);
@@ -125,7 +125,7 @@ legend('true','estimated')
 xlim([0 tf])
 grid on;
 grid minor;
-ylabel('\theta_1')
+ylabel('\theta_1','FontSize',72)
 subplot(3,2,4)
 plot(t,(K/J)*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
@@ -134,7 +134,7 @@ set(gca,'color','white','LineWidth',3,'FontSize',36)
 xlim([0 tf])
 grid on;
 grid minor;
-ylabel('\theta_2')
+ylabel('\theta_2','FontSize',72)
 subplot(3,2,5)
 plot(t,(-K/L)*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
@@ -144,7 +144,7 @@ xlim([0 tf])
 grid on;
 grid minor;
 xlabel('t (s)')
-ylabel('\theta_8')
+ylabel('\theta_8','FontSize',72)
 subplot(3,2,6)
 plot(t,(-R/L)*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
@@ -154,7 +154,7 @@ xlim([0 tf])
 grid on;
 grid minor;
 xlabel('t (s)')
-ylabel('\theta_9')
+ylabel('\theta_9','FontSize',72)
 
 
 Coeff = round([(1/dt)*thetabar(1:(r/n),end)'; (1/dt)*thetabar((r/n)+1:r,end)'],1)
