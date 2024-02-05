@@ -1,38 +1,31 @@
 %% Research code by Agus Hasan
+%% Paper: "WyNDA: A Method to Discover Mathematical Models of Dynamical Systems from Data" submitted for MethodsX.
 
 clear;
 clc;
 
 %% time horizon
-tf  = 20;
-dt  = 0.001;
-t   = dt:dt:tf;
+tf  = 5;            % time horizon
+dt  = 0.001;        % time step
+t   = dt:dt:tf;     % time array
 
 %% number of variables and coefficients
-n = 2;
-r = 18;
-
-%% system description
-A = eye(n);
-C = eye(n);
+n = 2;              % number of measured state
+r = 18;             % number of estimated parameters 
 
 %% noise
-R = 0;
+R = 0;              % noise covariance
 
 %% state initialization
-x        = [1;1];
-xbar     = x;%zeros(n,1);
-y        = x;zeros(n,1);
-thetabar = zeros(r,1);
+x        = [1;1];           % actual state initialization
+xbar     = x;               % estimated state initialization
+y        = x;               % measurement initialization
+thetabar = zeros(r,1);      % estimated parameter initialization
  
 %% true parameters
 mu = 1.2;
 
-%% initial control inputs
-%u     = [10 1]';
-
 %% for plotting
-%uArray          = [];
 xArray          = [];
 xbarArray       = [];
 yArray          = [];
@@ -51,31 +44,30 @@ Gamma   = 1*zeros(n,r);
 %% simulation
 for i=1:(tf/dt)
 
-    %uArray         = [uArray u];
     xArray         = [xArray x];
     xbarArray      = [xbarArray xbar];    
     yArray         = [yArray y];
     thetabarArray  = [thetabarArray thetabar]; 
     
-    x = A*x+dt*[x(2);mu*(1-x(1)^2)*x(2)-x(1)];
-    y = C*x+dt*R^2*randn(n,1);
+    x = x+dt*[x(2);mu*(1-x(1)^2)*x(2)-x(1)];
+    y = x+dt*R^2*randn(n,1);
 
     Phi = [y(1) y(2) y(1)^2 y(2)^2 y(1)*y(2) y(1)^3 y(2)^3 y(1)^2*y(2) y(1)*y(2)^2 zeros(9,1)';
            zeros(9,1)' y(1) y(2) y(1)^2 y(2)^2 y(1)*y(2) y(1)^3 y(2)^3 y(1)^2*y(2) y(1)*y(2)^2];
     
     % Estimation using adaptive observer
-    Kx = Px*C'*inv(C*Px*C'+Rx);
-    Kt = Pt*Gamma'*C'*inv(C*Gamma*Pt*Gamma'*C'+Rt);
-    Gamma = (eye(n)-Kx*C)*Gamma;
+    Kx = Px*inv(Px+Rx);
+    Kt = Pt*Gamma'*inv(Gamma*Pt*Gamma'+Rt);
+    Gamma = (eye(n)-Kx)*Gamma;
 
-    xbar = xbar+(Kx+Gamma*Kt)*(y-C*xbar);
-    thetabar = thetabar-Kt*(y-C*xbar);
+    xbar = xbar+(Kx+Gamma*Kt)*(y-xbar);
+    thetabar = thetabar-Kt*(y-xbar);
 
-    xbar = A*xbar+Phi*thetabar;
+    xbar = xbar+Phi*thetabar;
     thetabar = thetabar;
 
-    Px = (1/lambdav)*eye(n)*(eye(n)-Kx*C)*Px*eye(n);
-    Pt = (1/lambdat)*(eye(r)-Kt*C*Gamma)*Pt;
+    Px = (1/lambdav)*eye(n)*(eye(n)-Kx)*Px*eye(n);
+    Pt = (1/lambdat)*(eye(r)-Kt*Gamma)*Pt;
     Gamma = eye(n)*Gamma-Phi;
 
 end
@@ -124,5 +116,3 @@ grid on;
 grid minor;
 ylabel('q')
 xlabel('p')
-
-Coeff = round([(1/dt)*thetabar(1:(r/n),end)'; (1/dt)*thetabar((r/n)+1:2*(r/n),end)'; (1/dt)*thetabar(2*(r/n)+1:r,end)'],2)
