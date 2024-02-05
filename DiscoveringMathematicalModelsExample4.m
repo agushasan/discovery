@@ -1,29 +1,26 @@
 %% Research code by Agus Hasan
+%% Paper: "WyNDA: A Method to Discover Mathematical Models of Dynamical Systems from Data" submitted for MethodsX.
 
 clear;
 clc;
 
 %% time horizon
-tf  = 1;
-dt  = 0.0001;
-t   = dt:dt:tf;
+tf  = 1;            % time horizon
+dt  = 0.0001;       % time step
+t   = dt:dt:tf;     % time array
 
 %% number of variables and coefficients
-n = 3;
-r = 5;
-
-%% system description
-A = eye(n);
-C = eye(n);
+n = 3;              % number of measured state
+r = 5;              % number of estimated parameters 
 
 %% noise
-RF = 1;
+RF = 1;             % noise covariance
 
 %% state initialization
-x        = [5;1;1];
-xbar     = x;%zeros(n,1);
-y        = x;%zeros(n,1);
-thetabar = zeros(r,1);
+x        = [5;1;1];         % actual state initialization
+xbar     = x;               % estimated state initialization
+y        = x;               % measurement initialization
+thetabar = zeros(r,1);      % estimated parameter initialization
  
 %% true parameters
 g = 9.8;
@@ -63,26 +60,26 @@ for i=1:(tf/dt)
     yArray         = [yArray y];
     thetabarArray  = [thetabarArray thetabar]; 
     
-    x = A*x+dt*[x(2);g-(c/m)*(x(3)/x(1))^2;-(R/L)*x(3)]+dt*[0 0 1/L]'*u;    
-    y = C*x+dt*RF^2*randn(n,1);
+    x = x+dt*[x(2);g-(c/m)*(x(3)/x(1))^2;-(R/L)*x(3)]+dt*[0 0 1/L]'*u;    
+    y = x+dt*RF^2*randn(n,1);
 
     Phi = [y(2) 0 0 0 0;
            0 1 (y(3)/y(1))^2 0 0;
            0 0 0 y(3) u];
     
     % Estimation using adaptive observer
-    Kx = Px*C'*inv(C*Px*C'+Rx);
-    Kt = Pt*Gamma'*C'*inv(C*Gamma*Pt*Gamma'*C'+Rt);
-    Gamma = (eye(n)-Kx*C)*Gamma;
+    Kx = Px*inv(Px+Rx);
+    Kt = Pt*Gamma'*inv(Gamma*Pt*Gamma'+Rt);
+    Gamma = (eye(n)-Kx)*Gamma;
 
-    xbar = xbar+(Kx+Gamma*Kt)*(y-C*xbar);
-    thetabar = thetabar-Kt*(y-C*xbar);
+    xbar = xbar+(Kx+Gamma*Kt)*(y-xbar);
+    thetabar = thetabar-Kt*(y-xbar);
 
-    xbar = A*xbar+Phi*thetabar;
+    xbar = xbar+Phi*thetabar;
 
     thetabar = thetabar;
-    Px = (1/lambdav)*eye(n)*(eye(n)-Kx*C)*Px*eye(n);
-    Pt = (1/lambdat)*(eye(r)-Kt*C*Gamma)*Pt;
+    Px = (1/lambdav)*eye(n)*(eye(n)-Kx)*Px*eye(n);
+    Pt = (1/lambdat)*(eye(r)-Kt*Gamma)*Pt;
     Gamma = eye(n)*Gamma-Phi;
 
 end
