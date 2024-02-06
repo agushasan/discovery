@@ -80,7 +80,7 @@ hold on;
 plot(t,yArray(2,:),'-','LineWidth',16);
 hold on;
 plot(t,xbarArray(2,:),':','LineWidth',16)
-set(gca,'color','white','LineWidth',3,'FontSize',56)
+set(gca,'color','white','LineWidth',3,'FontSize',36)
 %legend('true # of prey','estimated # of prey','true # of predator','estimated # of predator')
 grid on;
 grid minor;
@@ -92,25 +92,25 @@ subplot(2,1,1)
 plot(t,mu*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,thetabarArray(11,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 legend('true','estimated')
 grid on;
 grid minor;
 ylim([mu-1 mu+1])
-ylabel('\mu','FontSize',72)
+ylabel('\mu','FontSize',36)
 subplot(2,1,2)
 plot(t,mu*ones(1,length(t))-thetabarArray(11,:)/dt,':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
-ylabel('error \mu','FontSize',72)
+ylabel('error \mu','FontSize',36)
 xlabel('t (s)')
 
 figure(3)
 plot(yArray(1,:),yArray(2,:),'-','LineWidth',16);
 hold on;
 plot(xbarArray(1,:),xbarArray(2,:),':','LineWidth',16)
-set(gca,'color','white','LineWidth',3,'FontSize',56)
+set(gca,'color','white','LineWidth',3,'FontSize',36)
 legend('measured','estimated')
 grid on;
 grid minor;
