@@ -70,16 +70,16 @@ end
 figure(1)
 subplot(2,1,1)
 plot(t,DATAMSD(1,:),'-b','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
-ylabel('x [m]','FontSize',72)
+ylabel('x [m]','FontSize',24)
 subplot(2,1,2)
 plot(t,DATAMSD(2,:),'-b','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
-ylabel('v [m/s]','FontSize',72)
+ylabel('v [m/s]','FontSize',24)
 xlabel('t (s)')
 
 figure(2)
@@ -87,19 +87,19 @@ subplot(2,1,1)
 plot(t,DATAMSD(1,:),'-b','LineWidth',10);
 hold on;
 plot(t,xbarArray(1,:),':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 legend('measured','estimated')
 grid on;
 grid minor;
-ylabel('x [m]','FontSize',72)
+ylabel('x [m]','FontSize',24)
 subplot(2,1,2)
 plot(t,DATAMSD(2,:),'-b','LineWidth',10);
 hold on;
 plot(t,xbarArray(2,:),':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
-ylabel('v [m/s]','FontSize',72)
+ylabel('v [m/s]','FontSize',24)
 xlabel('t (s)')
 
 figure(3)
@@ -107,14 +107,14 @@ subplot(2,2,1)
 plot(t,(0)*ones(1,length(t))*dt,'-k','LineWidth',10);
 hold on;
 plot(t,thetabarArray(1,:),':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 legend('true','estimated')
 xlim([0 tf])
 ylim([-2 0.5])
 grid on;
 grid minor;
 ylabel('\theta_1')
-axes('Position',[.25 .62 .2 .2])
+axes('Position',[.35 .66 .1 .1])
 box on
 plot(t,(0)*ones(1,length(t))*dt,'-k','LineWidth',10);
 hold on;
@@ -128,13 +128,13 @@ subplot(2,2,2)
 plot(t,(1)*ones(1,length(t))*dt,'-k','LineWidth',10);
 hold on;
 plot(t,thetabarArray(2,:),':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 xlim([0 tf])
 ylim([-2 0.5])
 grid on;
 grid minor;
 ylabel('\theta_2')
-axes('Position',[.7 .62 .2 .2])
+axes('Position',[.79 .66 .1 .1])
 box on
 plot(t,(1)*ones(1,length(t))*dt,'-k','LineWidth',10);
 hold on;
@@ -148,14 +148,14 @@ subplot(2,2,3)
 plot(t,(-84*dt)*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,thetabarArray(6,:),':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 xlim([0 tf])
 ylim([-2 0.5])
 grid on;
 grid minor;
 ylabel('\theta_6')
 xlabel('t (s)')
-axes('Position',[.25 .15 .2 .2])
+axes('Position',[.35 .2 .1 .1])
 box on
 plot(t,(-84*dt)*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
@@ -169,14 +169,14 @@ subplot(2,2,4)
 plot(t,(-0.9*dt)*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,thetabarArray(7,:),':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 ylim([-2 0.5])
 xlim([0 tf])
 grid on;
 grid minor;
 ylabel('\theta_7')
 xlabel('t (s)')
-axes('Position',[.7 .15 .2 .2])
+axes('Position',[.79 .2 .1 .1])
 box on
 plot(t,(-0.9*dt)*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
