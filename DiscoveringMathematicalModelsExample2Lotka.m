@@ -83,7 +83,7 @@ hold on;
 plot(t,yArray(2,:),'-','LineWidth',16);
 hold on;
 plot(t,xbarArray(2,:),':','LineWidth',16)
-set(gca,'color','white','LineWidth',3,'FontSize',56)
+set(gca,'color','white','LineWidth',3,'FontSize',36)
 grid on;
 grid minor;
 xlabel('t (s)')
@@ -93,62 +93,62 @@ subplot(4,2,1)
 plot(t,alpha*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,thetabarArray(1,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 legend('true','estimated')
 grid on;
 grid minor;
 ylim([alpha-0.2 alpha+0.2])
-ylabel('\alpha','FontSize',72)
+ylabel('\alpha','FontSize',36)
 subplot(4,2,2)
 plot(t,alpha*ones(1,length(t))-thetabarArray(1,:)/dt,':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
-ylabel('error \alpha','FontSize',72)
+ylabel('error \alpha','FontSize',36)
 subplot(4,2,3)
 plot(t,beta*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,-thetabarArray(5,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
 ylim([0 0.8])
-ylabel('\beta','FontSize',72)
+ylabel('\beta','FontSize',36)
 subplot(4,2,4)
 plot(t,beta*ones(1,length(t))+thetabarArray(5,:)/dt,':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
-ylabel('error \beta','FontSize',72)
+ylabel('error \beta','FontSize',36)
 subplot(4,2,5)
 plot(t,delta*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,thetabarArray(12,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
 ylim([0 0.2])
-ylabel('\delta','FontSize',72)
+ylabel('\delta','FontSize',36)
 subplot(4,2,6)
 plot(t,delta*ones(1,length(t))-thetabarArray(12,:)/dt,':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
-ylabel('error \delta','FontSize',72)
+ylabel('error \delta','FontSize',36)
 subplot(4,2,7)
 plot(t,gamma*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,-thetabarArray(9,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
 ylim([0 0.8])
-ylabel('\gamma','FontSize',72)
+ylabel('\gamma','FontSize',36)
 xlabel('t (s)')
 subplot(4,2,8)
 plot(t,gamma*ones(1,length(t))+thetabarArray(9,:)/dt,':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
-ylabel('error \gamma','FontSize',72)
+ylabel('error \gamma','FontSize',36)
 xlabel('t (s)')
