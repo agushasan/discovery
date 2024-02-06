@@ -89,27 +89,27 @@ subplot(3,1,1)
 plot(t,yArray(1,:),'-b','LineWidth',10);
 hold on;
 plot(t,xbarArray(1,:),':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 legend('measured','estimated')
 grid on;
 grid minor;
-ylabel('x [m]','FontSize',72)
+ylabel('x [m]','FontSize',36)
 subplot(3,1,2)
 plot(t,yArray(2,:),'-b','LineWidth',10);
 hold on;
 plot(t,xbarArray(2,:),':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
-ylabel('v [m/s]','FontSize',72)
+ylabel('v [m/s]','FontSize',36)
 subplot(3,1,3)
 plot(t,yArray(2,:),'-b','LineWidth',10);
 hold on;
 plot(t,xbarArray(2,:),':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
-ylabel('i [Amp]','FontSize',72)
+ylabel('i [Amp]','FontSize',36)
 xlabel('t (s)')
 
 figure(2)
@@ -117,58 +117,58 @@ subplot(3,2,1)
 plot(t,L*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,dt./thetabarArray(5,:),':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 legend('true','estimated')
 xlim([0 tf])
 ylim([L-1 L+1])
 grid on;
 grid minor;
-ylabel('L [H]','FontSize',72)
+ylabel('L [H]','FontSize',36)
 subplot(3,2,2)
 plot(t,L*ones(1,length(t))-(dt./thetabarArray(5,:)),':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 xlim([0 tf])
 ylim([-1 1])
 grid on;
 grid minor;
-ylabel('error L','FontSize',72)
+ylabel('error L','FontSize',36)
 subplot(3,2,3)
 plot(t,R*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,-L*thetabarArray(4,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 xlim([0 tf])
 ylim([R-1 R+1])
 grid on;
 grid minor;
-ylabel('R [Ohm]','FontSize',72)
+ylabel('R [Ohm]','FontSize',36)
 subplot(3,2,4)
 plot(t,R*ones(1,length(t))+L*thetabarArray(4,:)/dt,':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 xlim([0 tf])
 ylim([-1 1])
 grid on;
 grid minor;
-ylabel('error R','FontSize',72)
+ylabel('error R','FontSize',36)
 subplot(3,2,5)
 plot(t,c*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,-m*thetabarArray(3,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 xlim([0 tf])
 ylim([c-1 c+1])
 grid on;
 grid minor;
-ylabel('C [F]','FontSize',72)
+ylabel('C [F]','FontSize',36)
 xlabel('t (s)')
 subplot(3,2,6)
 plot(t,c*ones(1,length(t))+m*thetabarArray(3,:)/dt,':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 xlim([0 tf])
 ylim([-1 1])
 grid on;
 grid minor;
-ylabel('error C','FontSize',72)
+ylabel('error C','FontSize',36)
 xlabel('t (s)')
 
 Coeff = (1/dt)*thetabar(1:r,end)
