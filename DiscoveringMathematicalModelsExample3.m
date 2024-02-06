@@ -88,7 +88,7 @@ subplot(2,1,1)
 plot(t,yArray(1,:),'-b','LineWidth',10);
 hold on;
 plot(t,xbarArray(1,:),':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 legend('measured','estimated')
 grid on;
 grid minor;
@@ -97,7 +97,7 @@ subplot(2,1,2)
 plot(t,yArray(2,:),'-b','LineWidth',10);
 hold on;
 plot(t,xbarArray(2,:),':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
 ylabel('i [Amp]')
@@ -106,52 +106,52 @@ xlabel('t (s)')
 figure(2)
 subplot(3,2,[1 2])
 plot(t,uArray,'-k','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 legend('control input')
 xlim([0 tf])
 grid on;
 grid minor;
-ylabel('u','FontSize',72)
+ylabel('u','FontSize',36)
 xlabel('t (s)')
 subplot(3,2,3)
 plot(t,(-b/J)*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,thetabarArray(1,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 legend('true','estimated')
 xlim([0 tf])
 grid on;
 grid minor;
-ylabel('\theta_1','FontSize',72)
+ylabel('\theta_1','FontSize',36)
 subplot(3,2,4)
 plot(t,(K/J)*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,thetabarArray(2,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 xlim([0 tf])
 grid on;
 grid minor;
-ylabel('\theta_2','FontSize',72)
+ylabel('\theta_2','FontSize',36)
 subplot(3,2,5)
 plot(t,(-K/L)*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,thetabarArray(8,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 xlim([0 tf])
 grid on;
 grid minor;
 xlabel('t (s)')
-ylabel('\theta_8','FontSize',72)
+ylabel('\theta_8','FontSize',36)
 subplot(3,2,6)
 plot(t,(-R/L)*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,thetabarArray(9,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 xlim([0 tf])
 grid on;
 grid minor;
 xlabel('t (s)')
-ylabel('\theta_9','FontSize',72)
+ylabel('\theta_9','FontSize',36)
 
 
 Coeff = round([(1/dt)*thetabar(1:(r/n),end)'; (1/dt)*thetabar((r/n)+1:r,end)'],1)
