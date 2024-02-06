@@ -80,7 +80,7 @@ plot3(yArray(1,:),yArray(2,:),yArray(3,:),'-b','LineWidth',16);
 hold on;
 plot3(xbarArray(1,:),xbarArray(2,:),xbarArray(3,:),':r','LineWidth',16)
 legend('measured','estimated')
-set(gca,'color','white','LineWidth',3,'FontSize',56)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
 xlabel('p')
@@ -92,47 +92,47 @@ subplot(3,2,1)
 plot(t,sigma*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,-thetabarArray(2,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 legend('true','estimated')
 grid on;
 grid minor;
 ylim([0 20])
-ylabel('\sigma','FontSize',72)
+ylabel('\sigma','FontSize',36)
 subplot(3,2,2)
 plot(t,-sigma*ones(1,length(t))-thetabarArray(2,:)/dt,':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
-ylabel('error \sigma','FontSize',72)
+ylabel('error \sigma','FontSize',36)
 subplot(3,2,3)
 plot(t,rho*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,thetabarArray(12,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
 ylim([25 30])
-ylabel('\rho','FontSize',72)
+ylabel('\rho','FontSize',36)
 subplot(3,2,4)
 plot(t,rho*ones(1,length(t))-thetabarArray(12,:)/dt,':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
-ylabel('error \rho','FontSize',72)
+ylabel('error \rho','FontSize',36)
 subplot(3,2,5)
 plot(t,beta*ones(1,length(t)),'-k','LineWidth',10);
 hold on;
 plot(t,-thetabarArray(24,:)/dt,':g','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
 ylim([0 6])
-ylabel('\beta','FontSize',72)
+ylabel('\beta','FontSize',36)
 xlabel('t (s)')
 subplot(3,2,6)
 plot(t,-beta*ones(1,length(t))-thetabarArray(24,:)/dt,':r','LineWidth',10);
-set(gca,'color','white','LineWidth',3,'FontSize',36)
+set(gca,'color','white','LineWidth',3,'FontSize',24)
 grid on;
 grid minor;
-ylabel('error \beta','FontSize',72)
+ylabel('error \beta','FontSize',36)
 xlabel('t (s)')
